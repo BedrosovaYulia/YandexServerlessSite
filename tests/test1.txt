@@ -1,0 +1,28 @@
+{
+    "httpMethod": "GET",
+    "headers": {
+        "X-Custom-Header-1": "custom-header-1-value",
+        "X-Custom-Header-2": "custom-header-2-value"
+    },
+    "multiValueHeaders": {},
+    "queryStringParameters": {
+        "contactnumber": "+79281231231",
+        "email": "some_email@domain.com",
+        "message": "jknjk kj k kj kj",
+        "name": "Юлия",
+        "subject": "hbhjbj"
+    },
+    "multiValueQueryStringParameters": {
+        "identity": {
+            "sourceIp": "1.2.3.4",
+            "userAgent": ""
+        },
+        "httpMethod": "POST",
+        "requestId": "abcdefghijklmnop",
+        "requestTime": "",
+        "requestTimeEpoch": ""
+    },
+    "requestContext": {},
+    "body": "{'text': 'Hello world'}",
+    "isBase64Encoded": false
+}

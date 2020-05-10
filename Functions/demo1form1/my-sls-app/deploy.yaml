@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'my-sls-app
+
+  Sample SAM Template for my-sls-app
+
+  '
+Globals:
+  Function:
+    Timeout: 60
+Resources:
+  GetEC2RegionsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: GetES2Regions
+      Description: SAM demo
+      Role: arn:aws:iam::148849141066:role/service-role/Bitrix24Lambda
+      CodeUri: s3://bedrosova3/8d6256c8d126838ec8ea5a4cf4a768d3
+      Handler: main.lambda_handler
+      Runtime: python3.7
+      Events:
+        GetEC2RegionsAPI:
+          Type: Api
+          Properties:
+            Path: /getec2regions
+            Method: any
+Outputs:
+  GetEC2RegionsAPI:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/getec2regions/
+  GetEC2RegionsFunction:
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - GetEC2RegionsFunction
+      - Arn
