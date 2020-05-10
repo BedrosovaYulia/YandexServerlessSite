@@ -15,7 +15,7 @@ def lambda_handler(event,context):
     # Получаем данные
     messagelist=dict()
     for key in s3.list_objects(Bucket=os.environ['bucket'])['Contents']:
-        get_object_response = s3.get_object(Bucket='bucket-name',Key=key['Key'])
+        get_object_response = s3.get_object(Bucket=os.environ['bucket'],Key=key['Key'])
         messagelist[key['Key']]=get_object_response['Body'].read()
 
     return{
