@@ -116,6 +116,8 @@
 
             $('#deletesuccess').delay(8000).fadeIn(); /* 6000 */
 
+
+
         });
 
     </script>
@@ -137,6 +139,47 @@
         <h1>Results</h1>
 
         <div id="yandex_results">There are no any results</div>
+
+        <input type="button" value="Get Results" id='GetResultButton'>
+
+        <script>
+
+            
+             $(function () {
+
+                    $('#GetResultButton').on('click', function (e) {
+
+                        $.ajax({
+
+                                type: 'get',
+
+                                url: 'https://functions.yandexcloud.net/d4ebv359d6iphnp9hrc1',
+
+                                dataType: 'json',
+
+                                //data: $('.contactForm').serialize(),
+
+                                success: function (data) {
+
+
+                                    
+                                    $.each(data, function (index, element) {
+                                        
+                                       
+                                        $('#yandex_results').append($('<div>', {
+                                            text: index+" "+element.contactnumber+ " " +element.name + " " +element.name + " " +element.subject + " " + element.message
+                                        }));
+                                    });
+
+
+                                }
+
+                            });
+                    });
+
+             });
+
+        </script>
     
     
     </div>

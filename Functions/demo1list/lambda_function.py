@@ -16,9 +16,9 @@ def lambda_handler(event,context):
     messagelist=dict()
     for key in s3.list_objects(Bucket=os.environ['bucket'])['Contents']:
         get_object_response = s3.get_object(Bucket=os.environ['bucket'],Key=key['Key'])
-        messagelist[key['Key']]=get_object_response['Body'].read()
+        messagelist[key['Key']]=json.loads(get_object_response['Body'].read().decode())
 
     return{
         'statusCode':200,
-        'body':messagelist
+        'body':json.dumps(messagelist)
     }

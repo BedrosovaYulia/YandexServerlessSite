@@ -15,7 +15,7 @@ def lambda_handler(event,context):
     # Загрузить объекты в бакет
 
     ## Из строки
-    s3.put_object(Bucket=os.environ['bucket'], Key=event['queryStringParameters']['email'], Body=str(event['queryStringParameters']))
+    s3.put_object(Bucket=os.environ['bucket'], Key=event['queryStringParameters']['email'], Body=str(json.dumps(event['queryStringParameters'])))
 
 
     return{
